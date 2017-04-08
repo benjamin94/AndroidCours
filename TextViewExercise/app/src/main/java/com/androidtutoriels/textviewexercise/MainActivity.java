@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,13 +23,18 @@ public class MainActivity extends AppCompatActivity {
         ImageView image = (ImageView)findViewById(R.id.imageView);
         image.setImageResource(R.drawable.android1);
 
-        Button button = (Button)findViewById(R.id.button);
+        final EditText editText = (EditText)findViewById(R.id.editText);
+
+
+        final Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reussi.setText("J'ai cliqué sur le bouton --- depuis Java!!");
+                String text = String.valueOf(editText.getText());
+                reussi.setText(text);
             }
         });
+
 
     }
 
