@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 String text = String.valueOf(editText.getText());
                 reussi.setText(text);
                 Log.i("MainActivity","bouton cliqué");
-                Toast.makeText(MainActivity.this, "salut", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
             }
         });
 
