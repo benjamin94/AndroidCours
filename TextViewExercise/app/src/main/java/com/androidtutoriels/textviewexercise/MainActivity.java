@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         image.setImageResource(R.drawable.android1);
 
         Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reussi.setText("J'ai cliqué sur le bouton --- depuis Java!!");
+            }
+        });
 
     }
 
