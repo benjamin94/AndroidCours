@@ -1,5 +1,6 @@
 package com.androidtutoriels.textviewexercise;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText editText = (EditText)findViewById(R.id.editText);
 
+        final Intent intent = new Intent(this,EcranDeux.class);
 
         final Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
                 reussi.setText(text);
                 Log.i("MainActivity","bouton cliqué");
                 Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+
+                startActivity(intent);
             }
         });
+
 
 
     }
