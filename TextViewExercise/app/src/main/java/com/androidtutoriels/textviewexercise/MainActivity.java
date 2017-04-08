@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 String text = String.valueOf(editText.getText());
                 reussi.setText(text);
                 Log.i("MainActivity","bouton cliqué");
+                Toast.makeText(MainActivity.this, "salut", Toast.LENGTH_SHORT).show();
             }
         });
 
