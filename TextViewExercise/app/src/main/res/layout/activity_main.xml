@@ -21,14 +21,26 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="47dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:fitsSystemWindows="true"
-        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/le_texte"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher"
+        app:layout_constraintHorizontal_bias="0.498" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onClic"
+        android:text="Cliquez moi!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
 </android.support.constraint.ConstraintLayout>
