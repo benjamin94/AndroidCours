@@ -16,13 +16,31 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = (TextView)findViewById(R.id.helloworld_tv);
 
-        boolean a = false;
+        // AND : &
+        // OR : ||
 
-        if (a == true){
-            Log.i("Resultat","a = " + a);
-        } else {
-            textView.setText("Bonjour Monde!");
+        boolean a = true;
+        boolean b = true;
+        boolean c = false;
+
+        if (a == true && b == true){
+            Log.i("Resultat", "a & b est vrai");
         }
+
+        if (a == true && b == false){
+            Log.i("Resultat", "a = vrai & b faux");
+        }
+
+        if (a == true || b == false){
+            Log.i("Resultat", "a ou b vrai");
+        }
+
+        if (a == true && b == true || c == true){
+            Log.i("Resultat", "yes!");
+        }
+
+
+
 
     }
 }
