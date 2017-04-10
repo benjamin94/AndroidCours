@@ -12,14 +12,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int[] a = new int[5];
-        int[] b = {1,3,4,5,7,8,9};
+        int[] b = {1,2,3,4,5,6,7,8,9};
+        int[] a = new int[b.length];
 
         int i;
-
-        for (i = 0; i<b.length; i++){
-            Log.i("For", "i = " + i + " b[i] = " + b[i]);
+        for (i = 0; i<b.length; i = i+1){
+            a[i] = b[i];
+            Log.i("Resultat", String.valueOf(a[i]));
         }
+
+
+
 
 
 
