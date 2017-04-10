@@ -12,15 +12,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int[] b = {1,3,5,7,9,11,13,15,17};
+        int a = 5;
+        int b = 7;
 
-        int i = 0;
+        int c = sommeDeAEtB(a,b);
 
-        while (b[i]!=11){
-            i++;
-        }
-
-        Log.i("Resultat", "la position du 11 est: " + i);
+        Log.i("Resultat", "c = " + c);
 
     }
+
+    public int sommeDeAEtB(int a, int b){
+        int c = a + b;
+        return c;
+    }
+
 }
