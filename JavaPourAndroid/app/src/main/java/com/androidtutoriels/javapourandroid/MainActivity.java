@@ -3,6 +3,9 @@ package com.androidtutoriels.javapourandroid;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,18 +14,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView textView = (TextView)findViewById(R.id.helloworld_tv);
+
         boolean a = false;
-        boolean b = false;
 
         if (a == true){
-            Log.i("Resultat", "Vrai!, bol = " + a);
-        } else if (b == false){
-            Log.i("Resultat", "Non Vrai!, bol = " + b);
+            Log.i("Resultat","a = " + a);
         } else {
-            Log.i("Resultat", "else");
+            textView.setText("Bonjour Monde!");
         }
-
-        Log.i("Resultat", "fini");
 
     }
 }
