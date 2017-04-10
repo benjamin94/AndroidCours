@@ -12,26 +12,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int a = 5;
-        int b = 7;
+        int nombreDeJambes = 2;
 
-        int c = sommeEtLog(a,b);
+        //Monstre 1
+        Monstre monstre = new Monstre(nombreDeJambes);
+        String descriptionDuMonstre = monstre.donneTaDescription();
+        Log.i("Resultat","La description du monstre est: " + descriptionDuMonstre);
+        int nombreDeJambesM1 = monstre.getNombreDeJambes();
+        Log.i("Resultat","monstre 1 jambes:" + nombreDeJambesM1);
 
-        Log.i("Resultat", "c = " + c);
+        //Monstre 2
+        Monstre monstre2 = new Monstre();
+        int nombreDeJambesM2 = monstre2.getNombreDeJambes();
+        Log.i("Resultat","monstre 2 jambes:" + nombreDeJambesM2);
+
+        Utilites.jeSuisHereux();
+
+        //Super Monstre
+        SuperMonstre superMonstre = new SuperMonstre();
+        String sonDuMonstre = superMonstre.faisMoiPeur();
+        Log.i("Resultat","Super Monstre dit:" + sonDuMonstre);
+
     }
 
-    public int sommeDeAEtB(int a, int b){
-        int c = a + b;
-        return c;
-    }
-    public void logJeSuisContent(){
-        Log.i("Resultat", "je suis content");
-
-    }
-    public int sommeEtLog(int a, int b){
-        int d = sommeDeAEtB(a,b);
-        logJeSuisContent();
-        return d;
-    }
 
 }
