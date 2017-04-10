@@ -12,19 +12,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int[] b = {1,2,3,4,5,6,7,8,9};
-        int[] a = new int[b.length];
+        int[] b = {1,3,5,7,9,11,13,15,17};
 
-        int i;
-        for (i = 0; i<b.length; i = i+1){
-            a[i] = b[i];
-            Log.i("Resultat", String.valueOf(a[i]));
+        int i = 0;
+
+        while (b[i]!=11){
+            i++;
         }
 
-
-
-
-
+        Log.i("Resultat", "la position du 11 est: " + i);
 
     }
 }
