@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     int scoreJ1;
     int scoreJ2;
@@ -38,45 +38,12 @@ public class MainActivity extends AppCompatActivity {
         textJ1 = (TextView)findViewById(R.id.j1_score_tv);
         textJ2 = (TextView)findViewById(R.id.j2_score_tv);
 
-        reset();
-
         //onClick J1
-        boutonJ1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (jeuEnCours){
-                    scoreJ1++;
-                    textJ1.setText("le score est:" + scoreJ1);
-                    if (scoreJ1 == 10){
-                        Toast.makeText(MainActivity.this, "Joueur 1 Gagne!", Toast.LENGTH_SHORT).show();
-                        jeuEnCours = false;
-                    }
-                }
+        boutonJ1.setOnClickListener(this);
+        boutonJ2.setOnClickListener(this);
+        boutonReset.setOnClickListener(this);
 
-            }
-        });
-
-        //onClick J2
-        boutonJ2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (jeuEnCours){
-                    scoreJ2++;
-                    textJ2.setText("le score est:" + scoreJ2);
-                    if (scoreJ2 == 10){
-                        Toast.makeText(MainActivity.this, "Joueur 2 Gagne!", Toast.LENGTH_SHORT).show();
-                        jeuEnCours = false;
-                    }
-                }
-            }
-        });
-
-        boutonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                reset();
-            }
-        });
+        reset();
 
     }
 
@@ -89,4 +56,37 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "commencez!", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch(id) {
+            case R.id.joueur1_b:
+                //j1 clique
+                if (jeuEnCours) {
+                    scoreJ1++;
+                    textJ1.setText("le score est:" + scoreJ1);
+                    if (scoreJ1 == 10) {
+                        Toast.makeText(MainActivity.this, "Joueur 1 Gagne!", Toast.LENGTH_SHORT).show();
+                        jeuEnCours = false;
+                    }
+                }
+                break;
+            case R.id.joueur2_b:
+                //j2 clique
+                if (jeuEnCours) {
+                    scoreJ2++;
+                    textJ2.setText("le score est:" + scoreJ2);
+                    if (scoreJ2 == 10) {
+                        Toast.makeText(MainActivity.this, "Joueur 2 Gagne!", Toast.LENGTH_SHORT).show();
+                        jeuEnCours = false;
+                    }
+                }
+                break;
+            case R.id.reset_b:
+                //reset clique
+                reset();
+                break;
+        }
+
+    }
 }
