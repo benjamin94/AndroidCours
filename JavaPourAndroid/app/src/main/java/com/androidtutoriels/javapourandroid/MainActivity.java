@@ -2,6 +2,7 @@ package com.androidtutoriels.javapourandroid;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,5 +24,15 @@ public class MainActivity extends AppCompatActivity {
         char leCharacter = 'g';
 
         boolean leVraiFaux = false;
+
+        int a = 5;
+        int b = 6;
+        short leShort = 20;
+
+        int addition = 2147483647 + b;
+
+        int division = b/a;
+
+        Log.i("Resultat", String.valueOf(division));
     }
 }
