@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 int nombreEnMile = (int) (nombreEnKm * KM_EN_MILE);
 
                 resultat.setText("le résultat est: " + nombreEnMile);
+
             }
         });
     }
