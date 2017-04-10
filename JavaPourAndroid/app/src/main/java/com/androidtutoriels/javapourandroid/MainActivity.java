@@ -14,8 +14,12 @@ public class MainActivity extends AppCompatActivity {
 
         int[] a = new int[5];
         int[] b = {1,3,4,5,7,8,9};
-        
-        int c = b[0];
+
+        int i;
+
+        for (i = 0; i<b.length; i++){
+            Log.i("For", "i = " + i + " b[i] = " + b[i]);
+        }
 
 
 
