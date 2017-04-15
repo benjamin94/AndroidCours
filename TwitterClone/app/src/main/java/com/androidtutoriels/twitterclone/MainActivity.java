@@ -1,5 +1,6 @@
 package com.androidtutoriels.twitterclone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -36,39 +37,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Context context = getApplicationContext();
+
         final ConstraintLayout mainLayout = (ConstraintLayout)findViewById(R.id.main_constraint_layout);
         final ListView listView = (ListView)findViewById(R.id.timeline_lv);
 
-        mettreTimelineDansUtilisateur(listView, utilisateur);
-        mettreTweetDansView(mainLayout, tweetId);
+        Utilites.mettreTimelineDansUtilisateur(context, listView, utilisateur);
 
     }
 
-    private void mettreTweetDansView(final ConstraintLayout mainLayout, long tweetId) {
-        TweetUtils.loadTweet(tweetId, new Callback<Tweet>() {
-            @Override
-            public void success(Result<Tweet> result) {
-                TweetView tweetView = new TweetView(MainActivity.this, result.data );
-                mainLayout.addView(tweetView);
-            }
 
-            @Override
-            public void failure(TwitterException exception) {
-                Log.d("TwitterKit", "Load Tweet failure", exception);
-            }
-        });
-    }
-
-    private void mettreTimelineDansUtilisateur(ListView listView, String utilisateur) {
-        final UserTimeline userTimeline = new UserTimeline.Builder()
-                .screenName(utilisateur)
-                .build();
-        final TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(this)
-                .setTimeline(userTimeline)
-                .build();
-
-        listView.setAdapter(adapter);
-    }
 
 
 }
