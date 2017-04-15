@@ -28,22 +28,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "8C4EZkBBEAKFINjuqhdyQhfCV";
-    private static final String TWITTER_SECRET = "rWkh18fSCZR60OFOR3bg1ogb4O1ndJpCdEOTACHqsx4DXOv3AB";
-
-    private TwitterLoginButton loginButton;
-
     String utilisateur = "fabric";
     long tweetId = 631879971628183552L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Twitter authentication configuration
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
 
         final ConstraintLayout mainLayout = (ConstraintLayout)findViewById(R.id.main_constraint_layout);
@@ -51,26 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         mettreTimelineDansUtilisateur(listView, utilisateur);
         mettreTweetDansView(mainLayout, tweetId);
-
-
-        //Login bouton
-        loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
-        loginButton.setCallback(new Callback<TwitterSession>() {
-            @Override
-            public void success(Result<TwitterSession> result) {
-                // The TwitterSession is also available through:
-                // Twitter.getInstance().core.getSessionManager().getActiveSession()
-                TwitterSession session = result.data;
-                // TODO: Remove toast and use the TwitterSession's userID
-                // with your app's user model
-                String msg = "@" + session.getUserName() + " logged in! (#" + session.getUserId() + ")";
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void failure(TwitterException exception) {
-                Log.d("TwitterKit", "Login with Twitter failure", exception);
-            }
-        });
 
     }
 
@@ -100,12 +70,5 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // Make sure that the loginButton hears the result from any
-        // Activity that it triggered.
-        loginButton.onActivityResult(requestCode, resultCode, data);
-    }
 
 }
