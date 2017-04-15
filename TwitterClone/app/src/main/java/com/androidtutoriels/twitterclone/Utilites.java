@@ -39,7 +39,7 @@ public class Utilites {
         });
     }
 
-    public static void mettreTimelineDansUtilisateur(Context context, ListView listView, String utilisateur) {
+    public static void mettreTimelineDansListView(Context context, ListView listView, String utilisateur) {
         final UserTimeline userTimeline = new UserTimeline.Builder()
                 .screenName(utilisateur)
                 .build();
