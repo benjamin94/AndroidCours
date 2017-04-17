@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Context context = getApplicationContext();
+        final Context context = getApplicationContext();
 
         //Initialisation de views
         editText = (EditText)findViewById(R.id.timeline_et);
@@ -33,9 +35,15 @@ public class MainActivity extends AppCompatActivity {
 
         Utilites.mettreTimelineDansListView(context, listView, utilisateur);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Editable editable = editText.getText();
+                String texte = editable.toString();
+                Utilites.mettreTimelineDansListView(context, listView, texte);
+                
+            }
+        });
     }
-
-
-
 
 }
