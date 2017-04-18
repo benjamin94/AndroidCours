@@ -1,14 +1,21 @@
 package com.androidtutoriels.twitterclone;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.ListView;
 
+import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.models.Tweet;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.TweetUtils;
 import com.twitter.sdk.android.tweetui.TweetView;
@@ -49,4 +56,36 @@ public class Utilites {
 
         listView.setAdapter(adapter);
     }
+
+
+    public static void logoutTwitter(Context context) {
+        TwitterSession twitterSession = TwitterCore.getInstance().getSessionManager().getActiveSession();
+        if (twitterSession != null) {
+            ClearCookies(context);
+            Twitter.getSessionManager().clearActiveSession();
+            Twitter.logOut();
+        }
+    }
+
+    public static void ClearCookies(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            CookieManager.getInstance().removeAllCookies(null);
+            CookieManager.getInstance().flush();
+        } else {
+            CookieSyncManager cookieSyncMngr=CookieSyncManager.createInstance(context);
+            cookieSyncMngr.startSync();
+            CookieManager cookieManager=CookieManager.getInstance();
+            cookieManager.removeAllCookie();
+            cookieManager.removeSessionCookie();
+            cookieSyncMngr.stopSync();
+            cookieSyncMngr.sync();
+        }
+    }
+
+    public static void faireTweet(Context context, String tweetTexte) {
+        TweetComposer.Builder builder = new TweetComposer.Builder(context)
+                .text(tweetTexte);
+        builder.show();
+    }
+
 }
