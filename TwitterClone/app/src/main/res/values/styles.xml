@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--    <style name="Dark.Overlay" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>-->
+
+
 </resources>

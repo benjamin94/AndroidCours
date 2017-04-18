@@ -28,6 +28,14 @@ public class LoginActivity extends AppCompatActivity {
         Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_login);
 
+        TwitterSession session = Twitter.getSessionManager().getActiveSession();
+        if (session!=null){
+            //je suis login
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+        }
+
+
         //Login bouton
         loginButton = (TwitterLoginButton) findViewById(R.id.twitterLoginButton);
         loginButton.setCallback(new Callback<TwitterSession>() {

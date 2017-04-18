@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     ListView listView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 Editable editable = editText.getText();
                 String texte = editable.toString();
                 Utilites.mettreTimelineDansListView(context, listView, texte);
-                
+
             }
         });
     }
