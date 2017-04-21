@@ -28,4 +28,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha9'
     compile 'com.android.support:design:25.3.0'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
 }
