@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,12 +29,26 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView  titre_item;
+    TextView  max_temp_item;
+    TextView  min_temp_item;
+    TextView  location_item;
+    ImageView image_item;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        titre_item    = (TextView)findViewById(R.id.titre_tv);
+        max_temp_item = (TextView)findViewById(R.id.temp_max_tv);
+        min_temp_item = (TextView)findViewById(R.id.temp_min_tv);
+        location_item = (TextView)findViewById(R.id.ville_tv);
+        image_item    = (ImageView) findViewById(R.id.icon_iv);
 
         new TestRequest().execute();
 
@@ -71,7 +87,16 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(ClimatElement climatElement) {
             super.onPostExecute(climatElement);
 
-            climatElement.getVille();
+            String titreItem = climatElement.getNomDuJour() + " " +
+                    climatElement.getJour() + " " +
+                    climatElement.getNomDuMois() + " " +
+                    climatElement.getAnnee();
+
+            titre_item.setText(titreItem);
+            max_temp_item.setText("temp max: " + climatElement.getMaxTemp());
+            min_temp_item.setText("temp min: " + climatElement.getMinTemp());
+            location_item.setText(climatElement.getLocation());
+
         }
     }
 
@@ -81,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         JSONObject sys = mainJSON.getJSONObject("sys");
         String pays = sys.get("country").toString();
         String location = ville + ", " + pays;
-        int salut = 1;
 
         JSONObject main = mainJSON.getJSONObject("main");
         String minTemp = main.get("temp_min").toString();
@@ -91,12 +115,23 @@ public class MainActivity extends AppCompatActivity {
         int timeStamp = Integer.valueOf(dt);
         Calendar mydate = Calendar.getInstance();
         mydate.setTimeInMillis((long)timeStamp*1000);
-        String resultat = mydate.get(Calendar.DAY_OF_MONTH)+"."+mydate.get(Calendar.MONTH)+"."+mydate.get(Calendar.YEAR);
 
         String nomDuMois = Utilites.getMois(mydate.get(Calendar.MONTH));
         String nomDuJour = Utilites.getJour(mydate.get(Calendar.DAY_OF_WEEK));
 
-        ClimatElement climatElement = new ClimatElement(ville,pays,location,minTemp,maxTemp,timeStamp,nomDuMois,nomDuJour);
+        ClimatElement climatElement = new ClimatElement(
+                ville,
+                pays,
+                location,
+                minTemp,
+                maxTemp,
+                timeStamp,
+                nomDuMois,
+                nomDuJour,
+                mydate.get(Calendar.DAY_OF_MONTH),
+                mydate.get(Calendar.MONTH),
+                mydate.get(Calendar.YEAR));
+
         return climatElement;
     }
 

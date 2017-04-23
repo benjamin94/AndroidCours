@@ -14,8 +14,11 @@ class ClimatElement {
     int    timeStamp;
     String nomDuMois;
     String nomDuJour;
+    int    jour;
+    int    mois;
+    int    annee;
 
-    public ClimatElement(String ville, String pays, String location, String minTemp, String maxTemp, int timeStamp, String nomDuMois, String nomDuJour) {
+    public ClimatElement(String ville, String pays, String location, String minTemp, String maxTemp, int timeStamp, String nomDuMois, String nomDuJour, int jour, int mois, int annee) {
         this.ville = ville;
         this.pays = pays;
         this.location = location;
@@ -24,6 +27,33 @@ class ClimatElement {
         this.timeStamp = timeStamp;
         this.nomDuMois = nomDuMois;
         this.nomDuJour = nomDuJour;
+        this.jour = jour;
+        this.mois = mois;
+        this.annee = annee;
+    }
+
+    public int getJour() {
+        return jour;
+    }
+
+    public void setJour(int jour) {
+        this.jour = jour;
+    }
+
+    public int getMois() {
+        return mois;
+    }
+
+    public void setMois(int mois) {
+        this.mois = mois;
+    }
+
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
     public String getVille() {
@@ -88,10 +118,6 @@ class ClimatElement {
 
     public void setNomDuJour(String nomDuJour) {
         this.nomDuJour = nomDuJour;
-    }
-
-    public String getnomDuJourVille(){
-        return ville;
     }
 
 }
