@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         String nomDuMois = Utilites.getMois(mydate.get(Calendar.MONTH));
         String nomDuJour = Utilites.getJour(mydate.get(Calendar.DAY_OF_WEEK));
 
+        ClimatElement climatElement = new ClimatElement(ville,pays,location,minTemp,maxTemp,timeStamp,nomDuMois,nomDuJour);
     }
 
 }
