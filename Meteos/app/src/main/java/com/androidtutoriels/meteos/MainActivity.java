@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         mydate.setTimeInMillis((long)timeStamp*1000);
         String resultat = mydate.get(Calendar.DAY_OF_MONTH)+"."+mydate.get(Calendar.MONTH)+"."+mydate.get(Calendar.YEAR);
 
+        String nomDuMois = Utilites.getMois(mydate.get(Calendar.MONTH));
+        String nomDuJour = Utilites.getJour(mydate.get(Calendar.DAY_OF_WEEK));
+
     }
 
 }
