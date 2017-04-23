@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class TestRequest extends AsyncTask<Void,Void,Void>{
+    private class TestRequest extends AsyncTask<Void,Void,ClimatElement>{
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ClimatElement doInBackground(Void... params) {
             Log.i("TestRequest","je ne suis pas synchro!");
 
             String urlTest = "http://api.openweathermap.org/data/2.5/weather?q=London&APPID=21c28e3675f2918f90e632ef85442b77";
@@ -52,21 +52,30 @@ public class MainActivity extends AppCompatActivity {
                     .url(urlTest)
                     .build();
 
+            ClimatElement climatElement = null;
+
             try {
                 Response response = client.newCall(request).execute();
                 String bodyReponse = response.body().string();
-                parseJSON(bodyReponse);
+                climatElement = parseJSON(bodyReponse);
                 Log.i("Reponse",response.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return null;
+            return climatElement;
+        }
+
+        @Override
+        protected void onPostExecute(ClimatElement climatElement) {
+            super.onPostExecute(climatElement);
+
+            climatElement.getVille();
         }
     }
 
-    private void parseJSON(String bodyReponse) throws JSONException {
+    private ClimatElement parseJSON(String bodyReponse) throws JSONException {
         JSONObject mainJSON = new JSONObject(bodyReponse);
         String ville = mainJSON.get("name").toString();
         JSONObject sys = mainJSON.getJSONObject("sys");
@@ -88,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         String nomDuJour = Utilites.getJour(mydate.get(Calendar.DAY_OF_WEEK));
 
         ClimatElement climatElement = new ClimatElement(ville,pays,location,minTemp,maxTemp,timeStamp,nomDuMois,nomDuJour);
+        return climatElement;
     }
 
 }
