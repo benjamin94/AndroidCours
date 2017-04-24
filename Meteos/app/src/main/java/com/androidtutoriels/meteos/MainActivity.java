@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     TextView  location_item;
     ImageView image_item;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
