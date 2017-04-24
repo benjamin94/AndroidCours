@@ -49,8 +49,35 @@ public class MainActivity extends AppCompatActivity {
         location_item = (TextView)findViewById(R.id.ville_tv);
         image_item    = (ImageView) findViewById(R.id.icon_iv);
 
-        new TestRequest().execute();
+        new Request5Jour().execute();
+        //new TestRequest().execute();
 
+    }
+
+    private class Request5Jour extends AsyncTask<Void,Void,ClimatElement[]>{
+
+        @Override
+        protected ClimatElement[] doInBackground(Void... params) {
+
+            String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url(urlString)
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                String bodyReponse = response.body().string();
+                //climatElement = parseJSON(bodyReponse);
+                Log.i("Reponse",response.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return new ClimatElement[0];
+        }
     }
 
     private class TestRequest extends AsyncTask<Void,Void,ClimatElement>{
