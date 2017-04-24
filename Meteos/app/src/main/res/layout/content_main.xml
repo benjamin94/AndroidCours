@@ -8,56 +8,86 @@
     tools:context="com.androidtutoriels.meteos.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <ImageView
-        android:id="@+id/icon_iv"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        app:srcCompat="@drawable/sunny"
-        android:layout_marginLeft="65dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/titre_tv" />
 
-    <TextView
-        android:id="@+id/titre_tv"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Vendredi 21 Avril 2017"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="8dp">
 
-    <TextView
-        android:id="@+id/temp_max_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="39dp"
-        android:text="temp max: 28°C"
-        app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/titre_tv" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/temp_min_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="39dp"
-        android:layout_marginTop="15dp"
-        android:text="temp min: 20°C"
-        app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-        app:layout_constraintTop_toBottomOf="@+id/temp_max_tv" />
+            <ImageView
+                android:id="@+id/icon_iv"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/sunny"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintVertical_bias="0.487"
+                android:layout_marginLeft="42dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
-        android:id="@+id/ville_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="39dp"
-        android:layout_marginTop="15dp"
-        android:text="Nice, France"
-        app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-        app:layout_constraintTop_toBottomOf="@+id/temp_min_tv" />
+            <TextView
+                android:id="@+id/titre_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vendredi 21 Avril 2017"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/temp_max_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="temp max: 28°C"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/titre_tv"
+                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
+                android:layout_marginLeft="32dp" />
+
+            <TextView
+                android:id="@+id/temp_min_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="temp min: 20°C"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/temp_max_tv"
+                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
+                android:layout_marginLeft="32dp" />
+
+            <TextView
+                android:id="@+id/ville_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nice, France"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/temp_min_tv"
+                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
+                android:layout_marginLeft="32dp" />
+
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
 </android.support.constraint.ConstraintLayout>
