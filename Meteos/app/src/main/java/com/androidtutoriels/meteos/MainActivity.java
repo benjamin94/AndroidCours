@@ -1,5 +1,6 @@
 package com.androidtutoriels.meteos;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,6 +64,24 @@ public class MainActivity extends AppCompatActivity {
         protected ClimatElement[] doInBackground(Void... params) {
 
             String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
+
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("http")
+                    .authority("api.openweathermap.org")
+                    .appendPath("data")
+                    .appendPath("2.5")
+                    .appendPath("forecast")
+                    .appendQueryParameter("q","London")
+                    .appendQueryParameter("appid","21c28e3675f2918f90e632ef85442b77")
+                    .build();
+
+            try {
+                URL url = new URL(uriBuilder.toString());
+                int hi = 1;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
 
             OkHttpClient client = new OkHttpClient();
 
