@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected ClimatElement[] doInBackground(Void... params) {
 
-            String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
+            //String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
 
             Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("http")
@@ -75,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
                     .appendQueryParameter("appid","21c28e3675f2918f90e632ef85442b77")
                     .build();
 
+            URL url = null;
+
             try {
-                URL url = new URL(uriBuilder.toString());
+                url = new URL(uriBuilder.toString());
                 int hi = 1;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url(urlString)
+                    .url(url)
                     .build();
 
             try {
