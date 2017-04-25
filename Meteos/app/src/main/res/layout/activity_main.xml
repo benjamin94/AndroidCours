@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.androidtutoriels.meteos.MainActivity"
-    android:background="@color/appBackground">
+    tools:context="com.androidtutoriels.meteos.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +20,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_main"
+        android:background="@color/appBackground"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
