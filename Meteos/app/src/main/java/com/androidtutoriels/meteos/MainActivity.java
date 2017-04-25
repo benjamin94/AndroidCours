@@ -118,10 +118,40 @@ public class MainActivity extends AppCompatActivity {
     private void parseMain(String bodyReponse) throws JSONException {
         JSONObject mainJSON =  new JSONObject(bodyReponse);
         JSONArray list = mainJSON.getJSONArray("list");
+
+        //Element 0
         JSONObject element0 = list.getJSONObject(0);
         int dt = element0.getInt("dt");
         String dt_text = element0.getString("dt_txt");
         Temps temps0 = new Temps(dt,dt_text);
+
+        //Climat Info
+        ////main
+        JSONObject main = element0.getJSONObject("main");
+        float temperature = (float) main.getDouble("temp");
+        float pression = (float) main.getDouble("pressure");
+        float humidite = (float) main.getDouble("humidity");
+
+        ////weather
+        JSONArray weather = element0.getJSONArray("weather");
+        JSONObject weather0 = weather.getJSONObject(0);
+        int weatherId = weather0.getInt("id");
+        String weatherMain = weather0.getString("main");
+        String weatherDescription = weather0.getString("description");
+        String weatherIcon = weather0.getString("icon");
+
+        ////vent
+        JSONObject vent = element0.getJSONObject("wind");
+        float vent_vitesse = (float)vent.getDouble("speed");
+
+        ClimatInfo climatInfo = new ClimatInfo(temperature,
+                pression,
+                humidite,
+                vent_vitesse,
+                weatherMain,
+                weatherDescription,
+                weatherIcon,
+                weatherId);
     }
 
     private Location parseLocation(String bodyReponse) throws JSONException {
