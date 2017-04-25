@@ -121,9 +121,18 @@ public class MainActivity extends AppCompatActivity {
         JSONObject mainJSON =  new JSONObject(bodyReponse);
         JSONArray list = mainJSON.getJSONArray("list");
 
+        Temps[] tempsArray = new Temps[list.length()];
+        ClimatInfo[] climatInfoArray = new ClimatInfo[list.length()];
+
+        int i = 0;
+        for (i=0; i<list.length(); i++){
+            JSONObject elementi = list.getJSONObject(i);
+            tempsArray[i] = parseTemps(elementi);
+            climatInfoArray[i] = parseClimatInfo(elementi);
+
+        }
         //Element 0
         JSONObject element0 = list.getJSONObject(0);
-
         Temps t0 = parseTemps(element0);
         ClimatInfo i0 = parseClimatInfo(element0);
 
