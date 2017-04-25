@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 String bodyReponse = response.body().string();
                 Location location = parseLocation(bodyReponse);
+                parseMain(bodyReponse);
+
                 //climatElement = parseJSON(bodyReponse);
                 Log.i("Reponse",response.toString());
             } catch (IOException e) {
@@ -111,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
             return new ClimatElement[0];
         }
+    }
+
+    private void parseMain(String bodyReponse) throws JSONException {
+        JSONObject mainJSON =  new JSONObject(bodyReponse);
+        JSONArray list = mainJSON.getJSONArray("list");
+        JSONObject element0 = list.getJSONObject(0);
     }
 
     private Location parseLocation(String bodyReponse) throws JSONException {
