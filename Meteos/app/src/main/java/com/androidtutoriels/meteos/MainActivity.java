@@ -24,6 +24,7 @@ import java.net.URI;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -121,9 +122,8 @@ public class MainActivity extends AppCompatActivity {
         JSONObject mainJSON =  new JSONObject(bodyReponse);
         JSONArray list = mainJSON.getJSONArray("list");
 
-        Temps[] tempsArray = new Temps[list.length()];
-        ClimatInfo[] climatInfoArray = new ClimatInfo[list.length()];
-
+        ArrayList<Temps> tempsArray = new ArrayList<Temps>();
+        ArrayList<ClimatInfo> climatInfosArray = new ArrayList<ClimatInfo>();
 
         int i = 0;
         for (i=0; i<list.length(); i++){
@@ -134,19 +134,20 @@ public class MainActivity extends AppCompatActivity {
             //Si Element 0 > 15h je prends
             if (i==0){
                 if(Integer.valueOf(tempsi.dt_text.substring(11,13)) > 15){
-                    tempsArray[i] = tempsi;
-                    climatInfoArray[i] = parseClimatInfo(elementi);
+                    tempsArray.add(tempsi);
+                    climatInfosArray.add(parseClimatInfo(elementi));
                 }
             }
 
             //Si temps == 15h je prends
             if (tempsi.dt_text.substring(11,13).equals("15")){
-                tempsArray[i] = tempsi;
-                climatInfoArray[i] = parseClimatInfo(elementi);
+                tempsArray.add(tempsi);
+                climatInfosArray.add(parseClimatInfo(elementi));
             }
 
         }
         int hi = 1;
+
 
     }
 
