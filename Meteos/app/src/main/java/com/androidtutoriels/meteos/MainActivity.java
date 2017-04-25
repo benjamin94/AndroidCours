@@ -36,10 +36,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView  titre_item;
-    TextView  max_temp_item;
-    TextView  min_temp_item;
-    TextView  location_item;
+    TextView  jour_item;
+    TextView  temperature_item;
     ImageView image_item;
 
     @Override
@@ -50,10 +48,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        titre_item    = (TextView)findViewById(R.id.titre_tv);
-        max_temp_item = (TextView)findViewById(R.id.temp_max_tv);
-        min_temp_item = (TextView)findViewById(R.id.temp_min_tv);
-        location_item = (TextView)findViewById(R.id.ville_tv);
+        jour_item    = (TextView)findViewById(R.id.jour_tv);
+        temperature_item = (TextView)findViewById(R.id.temperature_tv);
         image_item    = (ImageView) findViewById(R.id.icon_iv);
 
         new Request5Jour().execute();
@@ -126,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(climat);
             Toast.makeText(MainActivity.this, climat.toString(), Toast.LENGTH_SHORT).show();
 
+            String nomDuJour = climat.tempsArray.get(0).nomDeJour;
+            int temperature = (int) climat.climatInfosArray.get(0).temperature;
+
+            jour_item.setText(nomDuJour);
+            temperature_item.setText(temperature + "°C");
         }
     }
 
@@ -257,10 +258,12 @@ public class MainActivity extends AppCompatActivity {
                     climatElement.getNomDuMois() + " " +
                     climatElement.getAnnee();
 
+/*
             titre_item.setText(titreItem);
             max_temp_item.setText("temp max: " + climatElement.getMaxTemp());
             min_temp_item.setText("temp min: " + climatElement.getMinTemp());
             location_item.setText(climatElement.getLocation());
+*/
 
         }
     }
