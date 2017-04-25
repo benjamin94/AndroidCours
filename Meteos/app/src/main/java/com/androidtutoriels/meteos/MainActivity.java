@@ -65,14 +65,19 @@ public class MainActivity extends AppCompatActivity {
 
             //String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
 
+            final String QUERY_PARAM = "q";
+            final String APPID_PARAM = "appid";
+            final String UNITS_PARAM = "units";
+
             Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("http")
                     .authority("api.openweathermap.org")
                     .appendPath("data")
                     .appendPath("2.5")
                     .appendPath("forecast")
-                    .appendQueryParameter("q","London")
-                    .appendQueryParameter("appid","21c28e3675f2918f90e632ef85442b77")
+                    .appendQueryParameter(QUERY_PARAM,"London")
+                    .appendQueryParameter(UNITS_PARAM,"metric")
+                    .appendQueryParameter(APPID_PARAM,"21c28e3675f2918f90e632ef85442b77")
                     .build();
 
             URL url = null;
