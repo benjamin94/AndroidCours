@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -99,15 +100,36 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Response response = client.newCall(request).execute();
                 String bodyReponse = response.body().string();
+                Location location = parseLocation(bodyReponse);
                 //climatElement = parseJSON(bodyReponse);
                 Log.i("Reponse",response.toString());
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             return new ClimatElement[0];
         }
     }
+
+    private Location parseLocation(String bodyReponse) throws JSONException {
+        JSONObject mainJSON =  new JSONObject(bodyReponse);
+        JSONObject city = mainJSON.getJSONObject("city");
+        int id = city.getInt("id");
+        String ville = city.getString("name");
+        String pays = city.getString("country");
+        JSONObject coord = city.getJSONObject("coord");
+        float lat = (float)coord.getDouble("lat");
+        float lon = (float)coord.getDouble("lon");
+
+        Location location = new Location(id,lat,lon,ville,pays);
+
+        return location;
+    }
+
+
+
 
     private class TestRequest extends AsyncTask<Void,Void,ClimatElement>{
 
