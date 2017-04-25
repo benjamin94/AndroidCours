@@ -131,9 +131,16 @@ public class MainActivity extends AppCompatActivity {
             JSONObject elementi = list.getJSONObject(i);
             Temps tempsi = parseTemps(elementi);
 
+            //Si Element 0 > 15h je prends
+            if (i==0){
+                if(Integer.valueOf(tempsi.dt_text.substring(11,13)) > 15){
+                    tempsArray[i] = tempsi;
+                    climatInfoArray[i] = parseClimatInfo(elementi);
+                }
+            }
+
             //Si temps == 15h je prends
             if (tempsi.dt_text.substring(11,13).equals("15")){
-
                 tempsArray[i] = tempsi;
                 climatInfoArray[i] = parseClimatInfo(elementi);
             }
