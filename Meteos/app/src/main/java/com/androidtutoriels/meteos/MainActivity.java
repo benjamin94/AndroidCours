@@ -124,17 +124,22 @@ public class MainActivity extends AppCompatActivity {
         Temps[] tempsArray = new Temps[list.length()];
         ClimatInfo[] climatInfoArray = new ClimatInfo[list.length()];
 
+
         int i = 0;
         for (i=0; i<list.length(); i++){
+
             JSONObject elementi = list.getJSONObject(i);
-            tempsArray[i] = parseTemps(elementi);
-            climatInfoArray[i] = parseClimatInfo(elementi);
+            Temps tempsi = parseTemps(elementi);
+
+            //Si temps == 15h je prends
+            if (tempsi.dt_text.substring(11,13).equals("15")){
+
+                tempsArray[i] = tempsi;
+                climatInfoArray[i] = parseClimatInfo(elementi);
+            }
 
         }
-        //Element 0
-        JSONObject element0 = list.getJSONObject(0);
-        Temps t0 = parseTemps(element0);
-        ClimatInfo i0 = parseClimatInfo(element0);
+        int hi = 1;
 
     }
 
