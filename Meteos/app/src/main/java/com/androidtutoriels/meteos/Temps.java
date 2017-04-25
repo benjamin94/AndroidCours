@@ -1,5 +1,7 @@
 package com.androidtutoriels.meteos;
 
+import java.util.Calendar;
+
 /**
  * Created by benjaminlize on 25/04/2017.
  */
@@ -18,6 +20,18 @@ public class Temps {
     public Temps(int dt_unix, String dt_text) {
         this.dt_unix = dt_unix;
         this.dt_text = dt_text;
+
+        Calendar mydate = Calendar.getInstance();
+        mydate.setTimeInMillis((long)dt_unix*1000);
+
+        this.an   = mydate.get(Calendar.YEAR);
+        this.mois = mydate.get(Calendar.MONTH);
+        this.jour = mydate.get(Calendar.DAY_OF_WEEK);
+
+        this.nomDeMois = Utilites.getMois(mydate.get(Calendar.MONTH));
+        this.nomDeJour = Utilites.getJour(mydate.get(Calendar.DAY_OF_WEEK));
+
+
     }
 
     public int getDt_unix() {

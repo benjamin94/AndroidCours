@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
         JSONObject mainJSON =  new JSONObject(bodyReponse);
         JSONArray list = mainJSON.getJSONArray("list");
         JSONObject element0 = list.getJSONObject(0);
+        int dt = element0.getInt("dt");
+        String dt_text = element0.getString("dt_txt");
+        Temps temps0 = new Temps(dt,dt_text);
     }
 
     private Location parseLocation(String bodyReponse) throws JSONException {
