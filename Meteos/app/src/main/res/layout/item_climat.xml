@@ -2,21 +2,22 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginRight="1dp">
 
     <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        tools:showIn="@layout/content_main">
+        tools:showIn="@layout/content_main"
+        android:layout_marginTop="6dp"
+        app:cardBackgroundColor="@color/cardViewBackground">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,41 +42,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Vendredi 21 Avril 2017"
+                android:text="Vendredi "
+                android:textSize="30dp"
                 app:layout_constraintLeft_toRightOf="@+id/icon_iv"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/temp_max_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="12dp"
-                android:text="temp max: 28°C"
-                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-                app:layout_constraintTop_toBottomOf="@+id/titre_tv" />
-
-            <TextView
-                android:id="@+id/temp_min_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="12dp"
-                android:text="temp min: 20°C"
-                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-                app:layout_constraintTop_toBottomOf="@+id/temp_max_tv" />
-
-            <TextView
-                android:id="@+id/ville_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="12dp"
-                android:text="Nice, France"
-                app:layout_constraintLeft_toRightOf="@+id/icon_iv"
-                app:layout_constraintTop_toBottomOf="@+id/temp_min_tv" />
-
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:text="28°C"
+                app:layout_constraintTop_toBottomOf="@+id/titre_tv"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="@+id/titre_tv"
+                app:layout_constraintLeft_toLeftOf="@+id/titre_tv"
+                android:textSize="50dp"/>
 
         </android.support.constraint.ConstraintLayout>
 
