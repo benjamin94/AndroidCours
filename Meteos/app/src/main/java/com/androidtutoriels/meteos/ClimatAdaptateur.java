@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by benjaminlize on 25/04/2017.
@@ -38,6 +39,7 @@ public class ClimatAdaptateur extends RecyclerView.Adapter<ClimatAdaptateur.View
 
         holder.jour.setText(temps.getNomDeJour());
         holder.temperature.setText(temperatureString);
+
     }
 
     @Override
@@ -57,6 +59,14 @@ public class ClimatAdaptateur extends RecyclerView.Adapter<ClimatAdaptateur.View
             jour = (TextView)itemView.findViewById(R.id.jour_tv);
             temperature = (TextView)itemView.findViewById(R.id.temperature_tv);
             icon = (ImageView)itemView.findViewById(R.id.icon_iv);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getLayoutPosition();
+                    Toast.makeText(v.getContext(), "hello", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
