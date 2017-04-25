@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,12 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class Request5Jour extends AsyncTask<Void,Void,ClimatElement[]>{
+    private class Request5Jour extends AsyncTask<Void,Void,Climat>{
 
         @Override
-        protected ClimatElement[] doInBackground(Void... params) {
+        protected Climat doInBackground(Void... params) {
 
             //String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=London,us&appid=21c28e3675f2918f90e632ef85442b77";
+
+            Climat climat = null;
 
             final String QUERY_PARAM = "q";
             final String APPID_PARAM = "appid";
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Location location = parseLocation(bodyReponse);
 
-                Climat climat = parseMain(bodyReponse);
+                climat = parseMain(bodyReponse);
                 climat.setLocation(location);
 
                 //climatElement = parseJSON(bodyReponse);
@@ -115,7 +118,14 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return new ClimatElement[0];
+            return climat;
+        }
+
+        @Override
+        protected void onPostExecute(Climat climat) {
+            super.onPostExecute(climat);
+            Toast.makeText(MainActivity.this, climat.toString(), Toast.LENGTH_SHORT).show();
+
         }
     }
 
