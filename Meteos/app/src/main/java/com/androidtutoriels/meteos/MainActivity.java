@@ -100,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Response response = client.newCall(request).execute();
                 String bodyReponse = response.body().string();
+
                 Location location = parseLocation(bodyReponse);
+
                 parseMain(bodyReponse);
 
                 //climatElement = parseJSON(bodyReponse);
@@ -121,18 +123,28 @@ public class MainActivity extends AppCompatActivity {
 
         //Element 0
         JSONObject element0 = list.getJSONObject(0);
+
+        Temps t0 = parseTemps(element0);
+        ClimatInfo i0 = parseClimatInfo(element0);
+
+    }
+
+    private Temps parseTemps(JSONObject element0) throws JSONException {
+        //Temps
         int dt = element0.getInt("dt");
         String dt_text = element0.getString("dt_txt");
         Temps temps0 = new Temps(dt,dt_text);
+        return temps0;
+    }
 
-        //Climat Info
-        ////main
+    private ClimatInfo parseClimatInfo(JSONObject element0) throws JSONException {
+        //main
         JSONObject main = element0.getJSONObject("main");
         float temperature = (float) main.getDouble("temp");
         float pression = (float) main.getDouble("pressure");
         float humidite = (float) main.getDouble("humidity");
 
-        ////weather
+        //weather
         JSONArray weather = element0.getJSONArray("weather");
         JSONObject weather0 = weather.getJSONObject(0);
         int weatherId = weather0.getInt("id");
@@ -140,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         String weatherDescription = weather0.getString("description");
         String weatherIcon = weather0.getString("icon");
 
-        ////vent
+        //vent
         JSONObject vent = element0.getJSONObject("wind");
         float vent_vitesse = (float)vent.getDouble("speed");
 
@@ -152,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
                 weatherDescription,
                 weatherIcon,
                 weatherId);
+
+        return climatInfo;
     }
 
     private Location parseLocation(String bodyReponse) throws JSONException {
