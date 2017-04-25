@@ -104,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Location location = parseLocation(bodyReponse);
 
-                parseMain(bodyReponse);
+                Climat climat = parseMain(bodyReponse);
+                climat.setLocation(location);
 
                 //climatElement = parseJSON(bodyReponse);
                 Log.i("Reponse",response.toString());
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void parseMain(String bodyReponse) throws JSONException {
+    private Climat parseMain(String bodyReponse) throws JSONException {
         JSONObject mainJSON =  new JSONObject(bodyReponse);
         JSONArray list = mainJSON.getJSONArray("list");
 
@@ -146,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        int hi = 1;
 
-
+        Climat climat = new Climat(tempsArray,climatInfosArray);
+        return climat;
     }
 
     private Temps parseTemps(JSONObject element0) throws JSONException {
