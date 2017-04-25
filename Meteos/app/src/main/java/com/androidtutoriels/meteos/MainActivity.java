@@ -39,10 +39,6 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView  jour_item;
-    TextView  temperature_item;
-    ImageView image_item;
-
     RecyclerView recyclerView;
 
     ClimatAdaptateur climatAdaptateur;
@@ -55,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        jour_item    = (TextView)findViewById(R.id.jour_tv);
-        temperature_item = (TextView)findViewById(R.id.temperature_tv);
-        image_item    = (ImageView) findViewById(R.id.icon_iv);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
 
         new Request5Jour().execute();
@@ -129,13 +122,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Climat climat) {
             super.onPostExecute(climat);
-            Toast.makeText(MainActivity.this, climat.toString(), Toast.LENGTH_SHORT).show();
 
             String nomDuJour = climat.tempsArray.get(0).nomDeJour;
             int temperature = (int) climat.climatInfosArray.get(0).temperature;
-
-            jour_item.setText(nomDuJour);
-            temperature_item.setText(temperature + "°C");
 
             climatAdaptateur = new ClimatAdaptateur(climat);
 
