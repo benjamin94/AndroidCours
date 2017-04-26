@@ -2,6 +2,7 @@ package com.androidtutoriels.meteos;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+
+import okhttp3.internal.Util;
 
 /**
  * Created by benjaminlize on 25/04/2017.
