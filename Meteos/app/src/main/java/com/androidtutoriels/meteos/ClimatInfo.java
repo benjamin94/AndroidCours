@@ -1,10 +1,12 @@
 package com.androidtutoriels.meteos;
 
+import java.io.Serializable;
+
 /**
  * Created by benjaminlize on 25/04/2017.
  */
 
-public class ClimatInfo {
+public class ClimatInfo implements Serializable {
 
     int climat_id;
     float temperature;

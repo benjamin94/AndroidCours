@@ -1,12 +1,13 @@
 package com.androidtutoriels.meteos;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by benjaminlize on 25/04/2017.
  */
 
-public class Temps {
+public class Temps implements Serializable{
 
     int dt_unix;
     int an;

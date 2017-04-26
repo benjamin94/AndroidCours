@@ -1,5 +1,7 @@
 package com.androidtutoriels.meteos;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 /**
  * Created by benjaminlize on 25/04/2017.
@@ -63,8 +67,14 @@ public class ClimatAdaptateur extends RecyclerView.Adapter<ClimatAdaptateur.View
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Context context = v.getContext();
                     int position = getLayoutPosition();
-                    Toast.makeText(v.getContext(), "hello", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "hello", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context,DetailActivity.class);
+                    intent.putExtra(DetailActivity.LOCATION_CLEF, climat.location);
+                    intent.putExtra(DetailActivity.TEMPS_CLEF, climat.tempsArray.get(position));
+                    intent.putExtra(DetailActivity.CLIMATINFO_CLEF, climat.climatInfosArray.get(position));
+                    context.startActivity(intent);
                 }
             });
         }

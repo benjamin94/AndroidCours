@@ -1,10 +1,12 @@
 package com.androidtutoriels.meteos;
 
+import java.io.Serializable;
+
 /**
  * Created by benjaminlize on 25/04/2017.
  */
 
-public class Location {
+public class Location implements Serializable{
 
     int id;
     float lat;
