@@ -1,7 +1,9 @@
 package com.androidtutoriels.meteos;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import java.io.Serializable;
 
@@ -20,5 +22,6 @@ public class DetailActivity extends AppCompatActivity {
         Location location = (Location) getIntent().getSerializableExtra(LOCATION_CLEF);
         Temps temps = (Temps) getIntent().getSerializableExtra(TEMPS_CLEF);
         ClimatInfo climatInfo = (ClimatInfo) getIntent().getSerializableExtra(CLIMATINFO_CLEF);
+
     }
 }

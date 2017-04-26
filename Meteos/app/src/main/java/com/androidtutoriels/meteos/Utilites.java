@@ -6,6 +6,18 @@ package com.androidtutoriels.meteos;
 
 public class Utilites {
 
+    static String soleil = "@drawable/sunny";
+    static String nuage_peu = "@drawable/clouds-and-sun";
+    static String nuage_normal = "@drawable/clouds-and-sun";
+    static String nuage_casse = "@drawable/clouds";
+    static String pluie_beaucoup = "@drawable/raining";
+    static String pluie_normal = "@drawable/raindrops";
+    static String eclair = "@drawable/bolt";
+    static String neige = "@drawable/snowflake";
+    static String brouillard = "@drawable/tornado";
+
+
+
     public static String getMois (int mois){
 
         String nomDuMois = null;
@@ -81,5 +93,47 @@ public class Utilites {
                 break;
         }
         return nomDuJour;
+    }
+
+    public static String getIconUri(int iconId){
+
+        String toReturn = "@drawable/weather";
+
+        if (iconId >= 200 && iconId <= 232 ){
+            toReturn = eclair;
+        }
+        if (iconId >= 300 && iconId <= 321 ){
+            toReturn = pluie_beaucoup;
+        }
+        if (iconId >= 500 && iconId <= 504 ){
+            toReturn = pluie_normal;
+        }
+        if (iconId == 511 ){
+            toReturn = neige;
+        }
+        if (iconId >= 520 && iconId <= 531 ){
+            toReturn = pluie_beaucoup;
+        }
+        if (iconId >= 600 && iconId <= 622 ){
+            toReturn = neige;
+        }
+        if (iconId >= 701 && iconId <= 781 ){
+            toReturn = brouillard;
+        }
+        if (iconId == 800){
+            toReturn = soleil;
+        }
+        if (iconId == 801 ){
+            toReturn = nuage_peu;
+        }
+        if (iconId == 802 ){
+            toReturn = nuage_normal;
+        }
+        if (iconId >= 803 && iconId <= 804 ){
+            toReturn = nuage_casse;
+        }
+
+        return toReturn;
+
     }
 }
