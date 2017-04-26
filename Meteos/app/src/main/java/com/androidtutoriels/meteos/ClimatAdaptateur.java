@@ -80,7 +80,6 @@ public class ClimatAdaptateur extends RecyclerView.Adapter<ClimatAdaptateur.View
                 public void onClick(View v) {
                     Context context = v.getContext();
                     int position = getLayoutPosition();
-                    Toast.makeText(context, "hello", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context,DetailActivity.class);
                     intent.putExtra(DetailActivity.LOCATION_CLEF, climat.location);
                     intent.putExtra(DetailActivity.TEMPS_CLEF, climat.tempsArray.get(position));
