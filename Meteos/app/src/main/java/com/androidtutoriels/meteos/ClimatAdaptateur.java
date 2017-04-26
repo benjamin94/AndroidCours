@@ -47,6 +47,14 @@ public class ClimatAdaptateur extends RecyclerView.Adapter<ClimatAdaptateur.View
         holder.jour.setText(temps.getNomDeJour());
         holder.temperature.setText(temperatureString);
 
+        Context context = holder.icon.getContext();
+
+        String iconUri = Utilites.getIconUri(climatInfo.getClimat_id());
+        int iconId = context.getResources().getIdentifier(iconUri,null,context.getPackageName());
+
+        Drawable iconDrawable = context.getResources().getDrawable(iconId);
+        holder.icon.setImageDrawable(iconDrawable);
+
     }
 
     @Override

@@ -23,5 +23,11 @@ public class DetailActivity extends AppCompatActivity {
         Temps temps = (Temps) getIntent().getSerializableExtra(TEMPS_CLEF);
         ClimatInfo climatInfo = (ClimatInfo) getIntent().getSerializableExtra(CLIMATINFO_CLEF);
 
+        String iconUri = Utilites.getIconUri(climatInfo.getClimat_id());
+        int iconId = getResources().getIdentifier(iconUri,null, getPackageName());
+
+        Drawable iconDrawable = getResources().getDrawable(iconId);
+        //icon.setImageDrawable(iconDrawable);
+
     }
 }

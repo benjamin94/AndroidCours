@@ -7,8 +7,8 @@ package com.androidtutoriels.meteos;
 public class Utilites {
 
     static String soleil = "@drawable/sunny";
-    static String nuage_peu = "@drawable/clouds-and-sun";
-    static String nuage_normal = "@drawable/clouds-and-sun";
+    static String nuage_peu = "@drawable/clouds_and_sun";
+    static String nuage_normal = "@drawable/clouds_and_sun";
     static String nuage_casse = "@drawable/clouds";
     static String pluie_beaucoup = "@drawable/raining";
     static String pluie_normal = "@drawable/raindrops";
